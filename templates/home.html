@@ -1,0 +1,24 @@
+{% extends "theme/base.html" %}
+{% load static %}
+{% block content %}
+<div class="row row-deck row-cards">
+  <div class="page-header d-print-none" aria-label="Page header">
+    <div class="row align-items-center">
+      <div class="col">
+        <div class="page-pretitle">Overview</div>
+        <h2 class="page-title mb-0">Dashboard</h2>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <h3 class="card-title">Welcome back, {{ user.get_full_name|default:user.username }}</h3>
+        <p class="text-muted mb-0">You are logged in.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+{% endblock %}

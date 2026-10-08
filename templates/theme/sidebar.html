@@ -1,0 +1,123 @@
+<aside class="navbar navbar-vertical navbar-expand-lg navbar-transparent">
+  <div class="container-fluid">
+<div class="navbar-brand navbar-brand-autodark">
+  <a href="." class="d-flex align-items-center gap-2 text-decoration-none">
+    <i class='far fa-calendar'></i>
+    <span class="fw-bold fs-3 text-body dh-navbar-text">
+      The <span class="text-primary">KNIGHTS</span>
+    </span>
+  </a>
+</div>
+
+<button
+  class="navbar-toggler"
+  type="button"
+  data-bs-toggle="collapse"
+  data-bs-target="#sidebar-menu"
+  aria-controls="sidebar-menu"
+  aria-expanded="false"
+  aria-label="Toggle navigation"
+  >
+  <span class="navbar-toggler-icon"></span>
+</button>
+
+    <div class="collapse navbar-collapse" id="sidebar-menu">
+        <ul class="navbar-nav pt-lg-3">
+
+           <li class="nav-item">
+            <span class="nav-link-title text-secondary small px-3 mb-1">
+              Sidebar
+            </span>
+          </li>
+          <li class="nav-item mb-1">
+            <a class="nav-link {% if request.resolver_match.url_name == 'dashboard' %}active{% endif %}" href="{% url 'dashboard' %}">
+              <span class="nav-link-icon d-md-none d-lg-inline-block">
+                <i class="fa fa-dashboard"></i>
+              </span>
+              <span class="nav-link-title">Dashboard</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link {% if request.resolver_match.app_name == 'info' %}active{% endif %}" href="{% url 'info:info_list' %}">
+              <span class="nav-link-icon d-md-none d-lg-inline-block">
+                <i class="nav-icon fas fa-info-circle"></i>
+              </span>
+              <span class="nav-link-title">Info</span>
+            </a>
+          </li>
+
+           <li class="nav-item">
+            <span class="nav-link-title text-secondary small px-3 mb-1">
+              Settings
+            </span>
+          </li>
+
+          {% if user.is_authenticated %}
+          {% if user.is_superuser %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'users:user_list' %}">
+              <span class="nav-link-icon d-md-none d-lg-inline-block">
+                <i class="nav-icon fas fa-user-lock"></i>
+              </span>
+              <span class="nav-link-title">Users</span>
+            </a>
+          </li>
+          {% endif %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'logout' %}">
+              <span class="nav-link-icon d-md-none d-lg-inline-block">
+                <i class="nav-icon fas fa-sign-out-alt"></i>
+              </span>
+              <span class="nav-link-title">Logout</span>
+            </a>
+          </li>
+          {% endif %}
+
+        </ul>
+    </div>
+  </div>
+</aside>
+
+<style>
+  .dh-navbar-logo {
+    width: 45px;
+    height: 45px;
+    object-fit: cover;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .dh-navbar-text {
+    white-space: nowrap;
+    line-height: 1.1;
+  }
+
+  /* Tablet and below */
+  @media (max-width: 767.98px) {
+    .dh-navbar-logo {
+      width: 32px;
+      height: 32px;
+    }
+
+    .dh-navbar-text {
+      font-size: 1.1rem !important;
+    }
+  }
+
+  /* Small phones */
+  @media (max-width: 375px) {
+    .dh-navbar-logo {
+      width: 30px;
+      height: 30px;
+    }
+
+    .dh-navbar-text {
+      font-size: 0.95rem !important;
+    }
+
+    .navbar-brand {
+      padding-left: 4px;
+    }
+  }
+</style>
